@@ -15,22 +15,42 @@ def main() -> None:
     songs = load_songs("data/songs.csv")
     print(f"Loaded songs: {len(songs)}")
 
-    user_prefs = {
-        "favorite_genre": "lofi",
-        "favorite_mood": "chill",
-        "target_energy": 0.35,
-        "likes_acoustic": True
+    profiles = {
+        "High-Energy Pop": {
+            "favorite_genre": "pop",
+            "favorite_mood": "happy",
+            "target_energy": 0.85,
+            "likes_acoustic": False
+        },
+        "Chill Lofi": {
+            "favorite_genre": "lofi",
+            "favorite_mood": "chill",
+            "target_energy": 0.35,
+            "likes_acoustic": True
+        },
+        "Deep Intense Rock": {
+            "favorite_genre": "rock",
+            "favorite_mood": "intense",
+            "target_energy": 0.9,
+            "likes_acoustic": False
+        },
+        "Sad but High-Energy": {
+            "favorite_genre": "pop",
+            "favorite_mood": "sad",
+            "target_energy": 0.9,
+            "likes_acoustic": False
+        },    
     }
 
-    recommendations = recommend_songs(user_prefs, songs, k=5)
+    for profile_name, user_prefs in profiles.items():
+        print(f"\n=== {profile_name} ===")
+        recommendations = recommend_songs(user_prefs, songs, k=5)
 
-    print("\nTop recommendations:\n")
-
-    for song, score, explanation in recommendations:
-        print(f"{song['title']} by {song['artist']}")
-        print(f"Score: {score:.2f}")
-        print(f"Reasons: {explanation}")
-        print()
+        for song, score, explanation in recommendations:
+            print(f"{song['title']} by {song['artist']}")
+            print(f"Score: {score:.2f}")
+            print(f"Reasons: {explanation}")
+            print()
 
 if __name__ == "__main__":
     main()

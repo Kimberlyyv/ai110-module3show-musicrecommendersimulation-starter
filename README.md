@@ -73,6 +73,21 @@ Below is an example of the recommender running in the terminal.
 
 ![Recommender Output](recommender-output.png)
 
+## Evaluation Screenshots
+
+### High-Energy Pop
+![High-Energy Pop Output](high-energy-pop.png)
+
+### Chill Lofi
+![Chill Lofi Output](chill-lofi.png)
+
+### Deep Intense Rock
+![Deep Intense Rock Output](deep-intense-rock.png)
+
+### Sad but High-Energy
+![Sad but High-Energy Output](sad-high-energy.png)
+
+
 ## Getting Started
 
 ### Setup

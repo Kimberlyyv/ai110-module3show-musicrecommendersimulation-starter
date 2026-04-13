@@ -71,6 +71,7 @@ def load_songs(csv_path: str) -> List[Dict]:
 
 def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     """Score a single song based on user preferences."""
+
     score = 0.0
     reasons = []
 
@@ -89,6 +90,7 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     reasons.append(f"energy similarity (+{energy_score:.2f})")
 
     return score, reasons
+
 
 def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tuple[Dict, float, str]]:
     """

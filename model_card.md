@@ -70,7 +70,7 @@ Prompts:
 - Cases where the system overfits to one preference  
 - Ways the scoring might unintentionally favor some users  
 
----
+One limitation I found is that the scoring system can become heavily dominated by energy if that feature is given too much weight. During my experiment, songs with similar energy levels ranked highly even when they did not match the user’s preferred genre or mood. This can create a filter bubble where energetic songs keep appearing for many different profiles. Another limitation is that the dataset is small, so the same songs can show up repeatedly across multiple recommendation lists.
 
 ## 7. Evaluation  
 
@@ -85,7 +85,9 @@ Prompts:
 
 No need for numeric metrics unless you created some.
 
----
+I tested the recommender with four profiles: High-Energy Pop, Chill Lofi, Deep Intense Rock, and Sad but High-Energy. Before the experiment, the system balanced genre, mood, and energy in a way that made the results feel more targeted to each profile. The Chill Lofi profile produced the most accurate results because the top songs matched the intended genre, mood, and energy level very closely. The Deep Intense Rock and Sad but High-Energy profiles showed that when the dataset has fewer exact matches, the system starts relying more on energy similarity.
+
+For my experiment, I reduced the genre match weight from +2 to +1 and increased the energy similarity weight from a maximum of +2 to a maximum of +4. After this change, the recommendations became more driven by energy than by genre. Songs like Gym Hero, Storm Runner, Neon Pulse, and Sunrise City appeared more often across different profiles because their energy levels were very close to the target values. This made the recommendations more varied in one sense, but it also made different profiles feel less distinct from each other.
 
 ## 8. Future Work  
 
