@@ -13,7 +13,23 @@ Your goal is to:
 
 Replace this paragraph with your own summary of what your version does.
 
----
+Real-world music recommendation systems use large amounts of user behavior data, such as listening history, likes, skips, and playlists, along with information about the songs themselves. Platforms like Spotify and YouTube use both collaborative filtering and content-based filtering to predict what users may enjoy next.
+
+In this project, I am building a simplified content-based recommender. My system focuses on matching songs to a user's preferred genre, mood, and energy level. It also considers other attributes like valence and tempo to better capture the overall vibe of a song. Each song receives a score based on how closely its attributes match the user's taste profile. After scoring every song in the dataset, the system ranks them and recommends the songs with the highest scores.
+
+Song Features
+- genre
+- mood
+- energy
+- tempo_bpm
+- valence
+
+UserProfile Features
+- favorite_genre
+- favorite_mood
+- target_energy
+- target_valence
+- tempo_preference
 
 ## How The System Works
 
@@ -29,7 +45,33 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
----
+The recommender evaluates every song in the dataset and assigns a score based on how well the song matches the user’s preferences.
+
+1. Look at each song in `songs.csv`.
+2. Start the song’s score at 0.
+3. Add points if the song’s genre matches the user’s favorite genre.
+4. Add points if the song’s mood matches the user’s favorite mood.
+5. Add points when the song’s energy is close to the user’s target energy.
+6. Add points when the song’s valence is close to the user’s target valence.
+7. Add a bonus if the song’s acousticness matches whether the user prefers acoustic music.
+8. After scoring all songs, rank them from highest to lowest score.
+9. Return the top recommended songs.
+
+- +2 points if the song genre matches the user's favorite genre
+- +1 point if the song mood matches the user's favorite mood
+- Up to +2 points depending on how close the song's energy is to the user's target energy
+- Up to +1 point depending on how close the song's valence is to the user's target valence
+- +0.5 bonus if the song matches the user's acoustic preference
+
+After calculating the score for each song, the recommender ranks all songs from highest to lowest score and returns the top recommendations.
+
+This system may over-prioritize genre, which means it could miss songs from other genres that still match the user's mood or energy. Because the dataset is small, the recommendations may also be limited and not reflect the full diversity of music that a user might enjoy.
+
+## CLI Output Example
+
+Below is an example of the recommender running in the terminal.
+
+![Recommender Output](recommender-output.png)
 
 ## Getting Started
 
